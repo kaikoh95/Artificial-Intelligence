@@ -1,2 +1,2 @@
 # graph_search
-Frontier graph search
+Frontier Graph search algorithms for Artificial Intelligence
