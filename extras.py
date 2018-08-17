@@ -1,3 +1,8 @@
+"""
+Extra classes built on search.py module.
+"""
+
+
 from search import *
 from itertools import dropwhile
 from math import *
@@ -39,7 +44,7 @@ class BFSFrontier(Frontier):
     def __iter__(self):
         
         while self.container:
-            yield self.container.pop(0)
+            yield self.container.pop(0) 
             
 
 class LCFSFrontier(Frontier):
@@ -60,7 +65,6 @@ class LCFSFrontier(Frontier):
     def __iter__(self):
         while self.container:
             yield heappop(self.container)[1]
-            
 
 
 class FunkyNumericGraph(Graph):
@@ -385,6 +389,7 @@ def main():
     print_actions(solution)
     
     
+        
 if __name__ == "__main__":
     main()
             
