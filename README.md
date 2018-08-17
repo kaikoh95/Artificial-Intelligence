@@ -1,2 +1,3 @@
-# graph_search
-Frontier Graph search for Artificial Intelligence
+# Artificial Intelligence
+
+Contains modules used for AI.
