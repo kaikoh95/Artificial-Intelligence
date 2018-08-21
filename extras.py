@@ -1,5 +1,6 @@
 """
 Extra classes built on search.py module.
+Contains algorithms for searching in AI.
 """
 
 
@@ -387,8 +388,13 @@ def print_map(map_graph, frontier, solution):
         print() 
 
         
-def main():    
-    """# DFS Frontier
+def main():
+    """
+    Uncomment each part to test for the respective classes.
+    """
+    
+    ## DFS Frontier ##
+    """
     # Example 1
     graph = ExplicitGraph(nodes=set('SAG'),
                           edge_list=[('S','A'), ('S', 'G'), ('A', 'G')],
@@ -397,6 +403,9 @@ def main():
     solutions = generic_search(graph, DFSFrontier())
     solution = next(solutions, None)
     print_actions(solution)
+    
+    print('-----------------------------------------------')
+    
     # Example 2
     graph = ExplicitGraph(nodes=set('SAG'),
                           edge_list=[('S', 'G'), ('S','A'), ('A', 'G')],
@@ -405,6 +414,9 @@ def main():
     solutions = generic_search(graph, DFSFrontier())
     solution = next(solutions, None)
     print_actions(solution)
+    
+    print('-----------------------------------------------')
+    
     #Example 3
     available_flights = ExplicitGraph(
         nodes=['Christchurch', 'Auckland', 
@@ -419,9 +431,13 @@ def main():
         goal_nodes={'Gold Coast'})
     
     my_itinerary = next(generic_search(available_flights, DFSFrontier()), None)
-    print_actions(my_itinerary)     
+    print_actions(my_itinerary)  
+    
+    print('-----------------------------------------------')
     """
-    """#BFS Frontier
+    
+    ## BFS Frontier ##
+    """
     #Example 1
     graph = OrderedExplicitGraph(nodes=set('SAG'),
                                  edges={('S','A'), ('S', 'G'), ('A', 'G')},
@@ -431,6 +447,9 @@ def main():
     solutions = generic_search(graph, DFSFrontier())
     solution = next(solutions, None)
     print_actions(solution)    
+    
+    print('-----------------------------------------------')
+    
     #Example 2
     graph = OrderedExplicitGraph(nodes=set('SABG'),
                                  edges={('S', 'A'), ('S','B'),
@@ -441,6 +460,9 @@ def main():
     solutions = generic_search(graph, DFSFrontier())
     solution = next(solutions, None)
     print_actions(solution)    
+    
+    print('-----------------------------------------------')
+    
     #Example 3
     flights = OrderedExplicitGraph(nodes={'Christchurch', 'Auckland', 
                                       'Wellington', 'Gold Coast'},
@@ -455,28 +477,45 @@ def main():
 
     my_itinerary = next(generic_search(flights, DFSFrontier()), None)
     print_actions(my_itinerary)
+    
+    print('-----------------------------------------------')
     """
-    """#Funky Numeric
+    
+    ## Funky Numeric ##
+    """
     #Example 1 
     graph = FunkyNumericGraph(4)
     for node in graph.starting_nodes():
-        print(node)    
+        print(node)  
+    
+    print('-----------------------------------------------')
+    
     #Example 2
     graph = FunkyNumericGraph(4)
     for arc in graph.outgoing_arcs(7):
-        print(arc)    
+        print(arc) 
+        
+    print('-----------------------------------------------')
+    
     #Example 3
     graph = FunkyNumericGraph(3)
     solutions = generic_search(graph, BFSFrontier())
     print_actions(next(solutions))
     print()
     print_actions(next(solutions))    
+    
+    print('-----------------------------------------------')
+    
     #Example 4
     graph = FunkyNumericGraph(3)
     solutions = generic_search(graph, BFSFrontier())
     print_actions(next(dropwhile(lambda path: path[-1].head <= 10, solutions)))    
+    
+    print('-----------------------------------------------')
     """
-    """#Location Graph
+    
+    ## Location Graph ##
+    """
     #Example 1
     graph = LocationGraph(nodes=set('ABC'),
                       locations={'A': (0, 0),
@@ -496,6 +535,9 @@ def main():
     
     for arc in graph.outgoing_arcs('C'):
         print(arc)
+        
+    print('-----------------------------------------------')
+    
     #Example 2
     pythagorean_graph = LocationGraph(
         nodes=set("abc"),
@@ -508,6 +550,9 @@ def main():
     
     for arc in pythagorean_graph.outgoing_arcs('a'):
         print(arc)
+        
+    print('-----------------------------------------------')
+    
     #Example 3
     graph = LocationGraph(nodes=set('ABC'),
                           locations={'A': (0, 0),
@@ -526,10 +571,13 @@ def main():
         print(arc)
     
     for arc in graph.outgoing_arcs('C'):
-        print(arc)    
+        print(arc)  
+        
+    print('-----------------------------------------------')
     """
+    
+    ## LCFS Frontier ##
     """
-    #LCFS Frontier 
     #Example 1
     graph = LocationGraph(nodes=set('ABC'),
                           locations={'A': (0, 0),
@@ -542,6 +590,9 @@ def main():
     
     solution = next(generic_search(graph, LCFSFrontier()))
     print_actions(solution)  
+    
+    print('-----------------------------------------------')
+    
     #Example 2
     graph = LocationGraph(nodes=set('ABC'),
                           locations={'A': (0, 0),
@@ -553,7 +604,10 @@ def main():
                           goal_nodes={'C'})
     
     solution = next(generic_search(graph, LCFSFrontier()))
-    print_actions(solution)    
+    print_actions(solution)  
+    
+    print('-----------------------------------------------')
+    
     #Example 3
     pythagorean_graph = LocationGraph(
         nodes=set("abc"),
@@ -565,7 +619,10 @@ def main():
         goal_nodes={'c'})
     
     solution = next(generic_search(pythagorean_graph, LCFSFrontier()))
-    print_actions(solution)    
+    print_actions(solution) 
+    
+    print('-----------------------------------------------')
+    
     #Example 4
     graph = ExplicitGraph(nodes=set('ABCD'),
                           edge_list=[('A', 'B', 2), ('A', 'D', 7),
@@ -575,6 +632,9 @@ def main():
     
     solution = next(generic_search(graph, LCFSFrontier()))
     print_actions(solution)
+    
+    print('-----------------------------------------------')
+    
     #Example 5
     graph = ExplicitGraph(nodes=set('ABCD'),
                           edge_list=[('A', 'D', 7), ('A', 'B', 2),
@@ -584,17 +644,20 @@ def main():
     
     solution = next(generic_search(graph, LCFSFrontier()))
     print_actions(solution)
+    
+    print('-----------------------------------------------')
     """
+    
+    ## Routing Graph ##
     '''
-    #Routing Graph
     #Example 1
     map_str = """\
-+-------+
-|  9  XG|
-|X XXX  |
-| S  0F |
-+-------+
-"""
+    +-------+
+    |  9  XG|
+    |X XXX  |
+    | S  0F |
+    +-------+
+    """
 
     graph = RoutingGraph(map_str)
 
@@ -628,12 +691,15 @@ def main():
     print("Outgoing arcs (available actions) at {}:".format(node))
     for arc in graph.outgoing_arcs(node):
         print ("  " + str(arc))
+        
+    print('-----------------------------------------------')
+    
     #Example 2
     map_str = """\
-+--+
-|GS|
-+--+
-"""
+    +--+
+    |GS|
+    +--+
+    """
 
     graph = RoutingGraph(map_str)
 
@@ -650,14 +716,17 @@ def main():
     print("Outgoing arcs (available actions) at {}:".format(node))
     for arc in graph.outgoing_arcs(node):
         print ("  " + str(arc))
+        
+    print('-----------------------------------------------')
+    
     #Example 3
     map_str = """\
-+----+
-| X  |
-|XSX |
-| X G|
-+----+
-"""
+    +----+
+    | X  |
+    |XSX |
+    | X G|
+    +----+
+    """
 
     graph = RoutingGraph(map_str)
 
@@ -666,120 +735,143 @@ def main():
     for s in graph.starting_nodes():
         for arc in graph.outgoing_arcs(s):
             print ("  " + arc.label)
+    
+    print('-----------------------------------------------')
     '''
+    
+    ## A* Routing Frontier ##
     '''
-    #A* Routing Frontier
     #Example 1
     map_str = """\
-+-------+
-|  F  XG|
-|X XXXX |
-| 2     |
-+-------+
-"""
+    +-------+
+    |  F  XG|
+    |X XXXX |
+    | 2     |
+    +-------+
+    """
 
     map_graph = RoutingGraph(map_str)
     frontier = AStarFrontier(map_graph)
     solution = next(generic_search(map_graph, frontier), None)
     print_actions(solution)
+    
+    print('-----------------------------------------------')
+    
     #Example 2
     map_str = """\
-+---------+
-|         |
-|    G    |
-|         |
-+---------+
-"""
+    +---------+
+    |         |
+    |    G    |
+    |         |
+    +---------+
+    """
 
     map_graph = RoutingGraph(map_str)
     frontier = AStarFrontier(map_graph)
     solution = next(generic_search(map_graph, frontier), None)
     print_actions(solution)
+    
+    print('-----------------------------------------------')
+    
     #Example 3
     map_str = """\
-+----------------+
-|2             F |
-|XX   G 123      |
-|2XXXXXXXXXXXXXX |
-|  F             |
-|           F    |
-+----------------+
-"""
+    +----------------+
+    |2             F |
+    |XX   G 123      |
+    |2XXXXXXXXXXXXXX |
+    |  F             |
+    |           F    |
+    +----------------+
+    """
 
     map_graph = RoutingGraph(map_str)
     frontier = AStarFrontier(map_graph)
     solution = next(generic_search(map_graph, frontier), None)
     print_actions(solution)
+    
+    print('-----------------------------------------------')
     '''
+    
+    ## Map Visualization ##
     '''
-    #Map Visualization
     #Example 1
     map_str = """\
-+------------+
-|            |
-|            |
-|            |
-|    S       |
-|            |
-|            |
-| G          |
-|            |
-+------------+
-"""
+    +------------+
+    |            |
+    |            |
+    |            |
+    |    S       |
+    |            |
+    |            |
+    | G          |
+    |            |
+    +------------+
+    """
 
     map_graph = RoutingGraph(map_str)
     frontier = AStarFrontier(map_graph)
     solution = next(generic_search(map_graph, frontier), None)
     print_map(map_graph, frontier, solution)
+    
+    print('-----------------------------------------------')
+    
     #Example 2
     map_str = """\
-+---------------+
-|    G          |
-|XXXXXXXXXXXX   |
-|           X   |
-|  XXXXXX   X   |
-|  X S  X   X   |
-|  X        X   |
-|  XXXXXXXXXX   |
-|               |
-+---------------+
-"""
+    +---------------+
+    |    G          |
+    |XXXXXXXXXXXX   |
+    |           X   |
+    |  XXXXXX   X   |
+    |  X S  X   X   |
+    |  X        X   |
+    |  XXXXXXXXXX   |
+    |               |
+    +---------------+
+    """
 
     map_graph = RoutingGraph(map_str)
     frontier = AStarFrontier(map_graph)
     solution = next(generic_search(map_graph, frontier), None)
     print_map(map_graph, frontier, solution)
+    
+    print('-----------------------------------------------')
+    
     #Example 3
     map_str = """\
-+-------------+
-|         G   |
-| S           |
-|         S   |
-+-------------+
-"""
+    +-------------+
+    |         G   |
+    | S           |
+    |         S   |
+    +-------------+
+    """
 
     map_graph = RoutingGraph(map_str)
     frontier = AStarFrontier(map_graph)
     solution = next(generic_search(map_graph, frontier), None)
     print_map(map_graph, frontier, solution)
+    
+    print('-----------------------------------------------')
+    
     #Example 4
     map_str = """\
-+------------+
-|         X  |
-| S       X G|
-|         X  |
-|         X  |
-|         X  |
-+------------+
-"""
+    +------------+
+    |         X  |
+    | S       X G|
+    |         X  |
+    |         X  |
+    |         X  |
+    +------------+
+    """
 
     map_graph = RoutingGraph(map_str)
     frontier = AStarFrontier(map_graph)
     solution = next(generic_search(map_graph, frontier), None)
     print_map(map_graph, frontier, solution)
+    
+    print('-----------------------------------------------')
     '''
             
     
-    
+
 if __name__ == "__main__":
     main()
