@@ -1,11 +1,17 @@
 """
-Representation of the alarm network for Belief Networks and Probabilistic Inference.
+Solving belief networks and probabilistic inferrence.
 """
 
 import itertools
 
 
 def joint_prob(network, assignment):
+    """Given a belief network and a complete assignment of all the 
+    variables in the network, returns the probability of the assignment. 
+    The data structure of the network is as described above. The assignment is a 
+    dictionary where keys are the variable names and the values are either True or False.
+    """
+    
     probability = 1
 
     for i in assignment.keys():
@@ -29,6 +35,18 @@ def joint_prob(network, assignment):
 
 
 def query(network, query_var, evidence):
+    """Given a belief network, the name of a variable in the network, 
+    and some evidence, returns the posterior distribution of query_var. 
+    The parameter network is a belief network. The parameter query_var is the name 
+    of the variable we are interested in and is of type string. The parameter evidence 
+    is a dictionary whose elements are assignments to some variables in the network; 
+    the keys are the name of the variables and the values are Boolean.
+    
+    The function returns a pair of real numbers where the first element is the probability 
+    of query_var being false given the evidence and the second element is the probability 
+    of query_var being true given the evidence.
+    """
+    
     hidden_vars = network.keys() - evidence.keys() - {query_var}  # finds set of hidden variables
     hidden_assignments = {}
     query_true, query_false = 0, 0
@@ -51,6 +69,8 @@ def query(network, query_var, evidence):
 
     return false_query, true_query
 
+
+# Representation of the alarm network for Belief Networks and Probabilistic Inference.
 
 alarm_net = {
     'Burglary': {
