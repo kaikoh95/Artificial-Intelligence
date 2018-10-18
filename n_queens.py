@@ -131,3 +131,16 @@ def greedy_descent(n_tuple):
             if count1 >= count:
                 print("A local minimum is reached.")
                 greedy = False
+                
+def random_restart(n):
+    """Have a random restart whenever the greedy descent 
+    algorithm reaches a local minimum. The program can find a 
+    solution for large values of n (e.g. n = 50) in a reasonable 
+    time. It is assumed that the function greedy_descent returns 
+    a solution if one is found or None otherwise.
+    """
+    
+    random.seed(0) # seeding so that the results can be replicated.
+    assignment = list(range(1, n+1))
+    while not greedy_descent(tuple(assignment)):
+        random.shuffle(assignment)                
